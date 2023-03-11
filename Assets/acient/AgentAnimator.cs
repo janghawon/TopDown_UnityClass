@@ -10,14 +10,16 @@ public class AgentAnimator : MonoBehaviour
     private Animator _animator;
     public Animator Animator => _animator;
 
-    public void Awake()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
+
     public void SetSpeed(float value)
     {
         _animator.SetFloat(_speedHash, value);
     }
+
     public void SetAirbone(bool value)
     {
         _animator.SetBool(_isAirboneHash, value);

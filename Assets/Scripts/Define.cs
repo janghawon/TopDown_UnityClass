@@ -6,6 +6,4 @@ namespace Core
         //Attack = 1,
         //OnHit = 2,
     }
-
-    
 }

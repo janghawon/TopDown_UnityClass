@@ -6,7 +6,6 @@ using UnityEngine;
 public class NormalState : CommonState
 {
     protected AgentMovement _agentMovement;
-
     public override void SetUp(Transform agentRoot)
     {
         base.SetUp(agentRoot);

@@ -10,12 +10,14 @@ public abstract class CommonState : MonoBehaviour, IState
 
     protected AgentAnimator _agentAnimator;
     protected AgentInput _agentInput;
-    protected AgentMovement _agentMovement;
+    protected AgentController _agentController;
     public virtual void SetUp(Transform agentRoot)
     {
+        Debug.Log(agentRoot);
         _agentAnimator = agentRoot.Find("Visual").GetComponent<AgentAnimator>();
         _agentInput = agentRoot.GetComponent<AgentInput>();
-        
+        Debug.Log(_agentInput.gameObject);
+        _agentController = GetComponent<AgentController>();
     }
     public void OnHitHandle(Vector3 position, Vector3 normal)
     {
