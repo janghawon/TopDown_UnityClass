@@ -1480,6 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064578479}
   - component: {fileID: 2064578480}
+  - component: {fileID: 2064578481}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -1514,6 +1515,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b999f204c92cf234eae4bb0d79732d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2064578481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064578478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c3dcdaff809e245ac1d1ed05eb2025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyDelay: 0.5
 --- !u!1001 &7026666430945524250
 PrefabInstance:
   m_ObjectHideFlags: 0

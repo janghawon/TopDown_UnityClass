@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AgentAnimator : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AgentAnimator : MonoBehaviour
 
     private readonly int _attackHash = Animator.StringToHash("attack");
     private readonly int _isAttackhash = Animator.StringToHash("is_attack");
+
+    public event Action OnAnimatonEndTrigger = null;
 
     private Animator _animator;
     public Animator Animator => _animator;
@@ -40,5 +43,10 @@ public class AgentAnimator : MonoBehaviour
     public void SetAirbone(bool value)
     {
         _animator.SetBool(_isAirboneHash, value);
+    }
+
+    public void OnAnimationEnd()
+    {
+        OnAnimatonEndTrigger?.Invoke();
     }
 }
