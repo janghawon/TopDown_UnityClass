@@ -36,7 +36,7 @@ public class AgentController : MonoBehaviour
         ChangeState(StateType.Normal); //이부분만 스타트로 이동이 맞다.
     }
 
-    private void ChangeState(StateType state)
+    public void ChangeState(StateType state)
     {
         _currentState?.OnExitState();
         _currentState = _stateDictionary[state];

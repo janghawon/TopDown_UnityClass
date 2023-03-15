@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core;
 
 public class NormalState : CommonState
 {
@@ -16,6 +17,13 @@ public class NormalState : CommonState
     {
         _agentMovement.StopImmediately();
         _agentInput.OnMovementKeyPress += OnMovementHandle; //들어올 때 키입력 구독
+        _agentInput.OnAttackKeyPress += OnAttackHandle;
+        _agentInput.OnAttackKeyPress -= OnAttackHandle;
+    }
+
+    private void OnAttackHandle()
+    {
+        _agentController.ChangeState(StateType.Attack);
     }
 
     public override void OnExitState()
