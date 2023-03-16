@@ -13,6 +13,8 @@ public class AgentMovement : MonoBehaviour
     public Vector3 MovementVelocity => _movementVelocity;
     private float _verticalVelocity;
 
+    public bool isActiveMove { get; set; }
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -23,6 +25,14 @@ public class AgentMovement : MonoBehaviour
     {
         _movementVelocity = value;
     }
+
+    public void SetRotation(Vector3 target)
+    {
+        Vector3 dir = target - transform.position;
+        dir.y = transform.position.y;
+        transform.rotation = Quaternion.LookRotation(dir);
+    }
+
     private void CalculatePlayerMovement()
     {
         _movementVelocity.Normalize();
@@ -45,6 +55,10 @@ public class AgentMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(isActiveMove)
+        {
+            CalculatePlayerMovement();
+        }
         CalculatePlayerMovement();
         if(_characterController.isGrounded == false)
         {
