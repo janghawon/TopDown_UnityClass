@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class AttackState : CommonState
 {
+    public Action<int> OnAttackStart = null;
+    public Action onAttackEnd = null;
+
     [SerializeField]
     private float _keyDelay = 0.5f; //0.5초내에 마우스를 한번 눌러줘야 실행
 

@@ -29,7 +29,7 @@ public class AgentMovement : MonoBehaviour
     public void SetRotation(Vector3 target)
     {
         Vector3 dir = target - transform.position;
-        dir.y = transform.position.y;
+        dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir);
     }
 
@@ -59,7 +59,6 @@ public class AgentMovement : MonoBehaviour
         {
             CalculatePlayerMovement();
         }
-        CalculatePlayerMovement();
         if(_characterController.isGrounded == false)
         {
             _verticalVelocity = _gravity * Time.fixedDeltaTime;
