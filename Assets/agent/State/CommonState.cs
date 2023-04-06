@@ -8,6 +8,8 @@ public abstract class CommonState : MonoBehaviour, IState
     public abstract void OnExitState();
     public abstract void UpdateState();
 
+
+
     protected AgentAnimator _agentAnimator;
     protected AgentInput _agentInput;
     protected AgentController _agentController;
