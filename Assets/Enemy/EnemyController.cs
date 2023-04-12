@@ -11,6 +11,12 @@ public class EnemyController : MonoBehaviour
     private NavAgentMovement _navMovement;
     public NavAgentMovement NavMovement => _navMovement;
 
+    private AgentAnimator _agentAnimator;
+    public AgentAnimator AgentAnimator => _agentAnimator;
+
+    private EnemyVFXManager _vfxManager;
+    public EnemyVFXManager VFXManager => _vfxManager;
+
     protected virtual void Awake()
     {
         List<CommonAIState> states = new List<CommonAIState>();
@@ -18,6 +24,8 @@ public class EnemyController : MonoBehaviour
 
         states.ForEach(s => s.SetUp(transform));
         _navMovement = GetComponent<NavAgentMovement>();
+        _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _vfxManager = GetComponent<EnemyVFXManager>();
     }
 
     protected virtual void Start()

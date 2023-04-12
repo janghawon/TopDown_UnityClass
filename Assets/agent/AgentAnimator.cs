@@ -14,6 +14,7 @@ public class AgentAnimator : MonoBehaviour
     private readonly int _isRollingHash = Animator.StringToHash("is_rolling");
 
     public event Action OnAnimationEndTrigger = null;
+    public event Action OnAnimationEventTrigger = null;
 
     private Animator _animator;
     public Animator Animator => _animator;
@@ -54,5 +55,10 @@ public class AgentAnimator : MonoBehaviour
     public void OnAnimationEnd()
     {
         OnAnimationEndTrigger?.Invoke();
+    }
+
+    public void OnAnimationEvent()
+    {
+        OnAnimationEventTrigger?.Invoke();
     }
 }
