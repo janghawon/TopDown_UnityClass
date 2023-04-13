@@ -20,11 +20,25 @@ public class AttackState : CommonState
     [SerializeField]
     private float _attackSlideDuration = 0.2f, _attackSlideSpeed = 0.1f;
 
+    private DamageCaster _damageCaster;
+
+    public override void SetUp(Transform agentRoot)
+    {
+        base.SetUp(agentRoot);
+        _damageCaster = agentRoot.Find("DamageCaster").GetComponent<DamageCaster>();
+    }
+
+    private void OnDamageCastHandle()
+    {
+        _damageCaster.CastDamage();
+    }
+
     public override void OnEnterState()
     {
         _agentInput.OnAttackKeyPress += OnAttackHandle;
         _agentAnimator.OnAnimationEndTrigger += OnAnimationEndHandle;
         _agentInput.OnRollingKeyPress += OnRollingHandle;
+        _agentAnimator.OnAnimationEventTrigger += OnDamageCastHandle;
         _currentCombo = 0;
         _canAttack = true;
         _agentAnimator.SetAttackState(true); //공격상태로 전환
@@ -36,6 +50,7 @@ public class AttackState : CommonState
         _agentInput.OnAttackKeyPress -= OnAttackHandle;
         _agentAnimator.OnAnimationEndTrigger -= OnAnimationEndHandle;
         _agentInput.OnRollingKeyPress -= OnRollingHandle;
+        _agentAnimator.OnAnimationEventTrigger -= OnDamageCastHandle;
         _agentAnimator.SetAttackState(false); //공격상태로 전환
         _agentAnimator.SetAttackTrigger(false);
     }

@@ -17,7 +17,6 @@ public class AgentController : MonoBehaviour
 
         foreach (StateType state in Enum.GetValues(typeof(StateType)))
         {
-            Debug.Log(state);
             IState stateScript = stateTrm.GetComponent($"{state}State") as IState;
 
             if (stateScript == null)
