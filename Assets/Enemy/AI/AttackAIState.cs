@@ -5,10 +5,21 @@ using UnityEngine;
 
 public class AttackAIState : CommonAIState
 {
-    [SerializeField] private float _rotateSpeed = 360f;
+    private float _rotateSpeed = 360f;
     protected Vector3 _targetVector;
 
     protected bool _isActive = false;
+
+    private int _atkDamage = 1;
+    private float _atkCooltime = 0.2f;
+
+    public override void SetUp(Transform agentRoot)
+    {
+        base.SetUp(agentRoot);
+        _atkDamage = _enemyController.EnemyData.AtkDamage;
+        _atkCooltime = _enemyController.EnemyData.AtkCoolTime;
+        _rotateSpeed = _enemyController.EnemyData.RotateSpeed;
+    }
 
     public override void OnEnterState()
     {
@@ -34,12 +45,20 @@ public class AttackAIState : CommonAIState
     private void AttackCollisionHandle()
     {
         _enemyController.AgentAnimator.SetAttackState(false);
+        _enemyController.AgentAnimator.SetAttackTrigger(false);
         _aiActionData.IsAttacking = false;
     }
 
     private void AttackAnimationEndHandle()
     {
+        _enemyController.AgentAnimator.SetAttackState(false);
+        StartCoroutine(DelayCoroutine(()=> _aiActionData.IsAttacking = false, _atkDamage));
+    }
 
+    IEnumerator DelayCoroutine(Action Callback, float time)
+    {
+        yield return new WaitForSeconds(time);
+        Callback?.Invoke();
     }
 
     private void SetTarget()
