@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager
 {
     public static PoolManager Instance;
 
@@ -17,18 +17,18 @@ public class PoolManager : MonoBehaviour
 
     public void CreatePool(PoolableMono prefab, int count = 10)
     {
+        //해당 게임오브젝트의 이름을 기반으로 풀을 만들어서 관리한다.
         Pool<PoolableMono> pool = new Pool<PoolableMono>(prefab, _trmParent, count);
-        _pools.Add(prefab.gameObject.name, pool);
+        _pools.Add(prefab.gameObject.name, pool); 
     }
 
     public PoolableMono Pop(string prefabName)
     {
         if(!_pools.ContainsKey(prefabName))
         {
-            Debug.LogError($"Prefab does not exist in pool : {prefabName}");
+            Debug.LogError($"Prefab does not exist on pool : {prefabName}");
             return null;
         }
-
         PoolableMono item = _pools[prefabName].Pop();
         item.Reset();
         return item;

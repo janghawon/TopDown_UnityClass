@@ -33,9 +33,6 @@ ModelImporter:
   - first:
       74: -5587218461935079473
     second: NPC02_IDEL.002
-  - first:
-      74: -1117561506462682535
-    second: NPC_01_WALK (1)
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -95,14 +92,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4786123
+      - time: 0.4775281
         functionName: OnAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.98630136
+      - time: 0.9775486
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

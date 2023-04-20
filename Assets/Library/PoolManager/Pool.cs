@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> where T : MonoBehaviour
+public class Pool<T> where T : PoolableMono
 {
     private Stack<T> _pool = new Stack<T>();
     private T _prefab;
@@ -42,7 +42,7 @@ public class Pool<T> where T : MonoBehaviour
 
     public void Push(T obj)
     {
-        obj.gameObject.SetActive(false); ;
+        obj.gameObject.SetActive(false);
         _pool.Push(obj);
     }
 }

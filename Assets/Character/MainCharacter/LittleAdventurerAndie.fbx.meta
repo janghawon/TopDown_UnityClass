@@ -121,14 +121,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.15245478
+      - time: 0.10223118
         functionName: OnAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.35421687
+      - time: 0.33236992
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -164,14 +164,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.28165373
+      - time: 0.1441798
         functionName: OnAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5662651
+      - time: 0.5606937
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -207,14 +207,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.32816538
+      - time: 0.2008702
         functionName: OnAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6915662
+      - time: 0.67052025
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -344,7 +344,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9590362
+      - time: 0.93349755
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

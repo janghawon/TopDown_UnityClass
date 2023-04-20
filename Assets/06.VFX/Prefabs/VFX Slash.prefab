@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8402108484834998878}
   - component: {fileID: 8402108484834998879}
   - component: {fileID: 8402108484834998864}
-  - component: {fileID: 1835772750441796356}
+  - component: {fileID: 2115470511937100633}
   m_Layer: 0
   m_Name: VFX Slash
   m_TagString: Untagged
@@ -117,7 +117,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1835772750441796356
+--- !u!114 &2115470511937100633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8402108484834998865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4df86f0dd52e195498495be4d25641e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 67c0827b0d724654087593e3df031738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particles: []
