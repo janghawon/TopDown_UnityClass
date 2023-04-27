@@ -2250,7 +2250,7 @@ MonoBehaviour:
   _WhatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  _hitColor: {r: 0.5764706, g: 0.9960785, b: 0.7568628, a: 0}
+  _hitColor: {r: 0.15692416, g: 0.3584906, b: 0.2435789, a: 1}
 --- !u!1 &828661283
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class RollingState : CommonState
     private float _rollingSpeed = 0.4f, _animationThreshold = 0.1f; //요건 니들이 값 잘 찾아야 한다.
     private float _timer = 0;
 
+
     public override void OnEnterState()
     {
         _agentAnimator.OnAnimationEndTrigger += RollingEndHandle;
