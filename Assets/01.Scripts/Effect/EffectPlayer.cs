@@ -28,7 +28,7 @@ public class EffectPlayer : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         if (_particles != null)
             _particles.ForEach(p => p.Simulate(0));

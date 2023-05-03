@@ -1,15 +1,56 @@
 .btn {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    font-size: 30px;
-    background-color: rgba(177, 136, 255, 255);
-    transition-property: background-color;
-    transition-duration: 0.2s;
+    width: 130px;
+    height: 70px;
+    -unity-font: url('project://database/Assets/09.Fonts/neodgm.ttf?fileID=12800000&guid=a31847102e4a98941b0c9f39f3639e10&type=3#neodgm');
+    -unity-font-definition: url('project://database/Assets/09.Fonts/neodgm%20SDF%20Toolkit.asset?fileID=11400000&guid=4d3a03f2a55426c46a2d31fd80158331&type=2#neodgm SDF Toolkit');
 }
 
 .btn:hover {
-    color: rgba(255, 255, 255, 255);
+}
+
+#popupWindow {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition-property: opacity, visibility;
+    transition-duration: 0.4s, 0.4s;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+#popupWindow.on {
+    opacity: 1;
+    visibility: visible;
+}
+
+#popup {
+    width: 600px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: -1600px;
+}
+
+#popupWindow.on > #popup {
+    margin-top: 0;
+}
+
+#popupexitBtn {
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    position: relative;
+    font-size: 60px;
     background-color: rgba(255, 0, 0, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
