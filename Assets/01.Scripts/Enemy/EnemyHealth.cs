@@ -18,6 +18,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private int _maxHP;  //이거 SO로 끌어쓰면 되는거 아닌가? 고민
     private int _currentHP;
 
+    public int MaxHP => _maxHP;
+    public int CurrentHP => _currentHP;
+
     private void Awake()
     {
         _aiActionData = transform.Find("AI").GetComponent<AIActionData>();
@@ -38,6 +41,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _aiActionData.HitNormal = normal;
 
         _currentHP -= damage;
+        _currentHP = Mathf.Clamp(_currentHP, 0, _maxHP);
         if(_currentHP <= 0)
         {
             IsDead = true;
@@ -45,6 +49,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
 
         OnHitTriggered?.Invoke();
+
+        UIManager.Instance.Subscribe(this); //구독
         OnHealthChanged?.Invoke(_currentHP, _maxHP); //이건 나중에 UI를 위해서
     }
 

@@ -14,26 +14,45 @@ public class DamageCaster : MonoBehaviour
     [SerializeField]
     private LayerMask _targetLayer;
 
-    [SerializeField]
-    private int _damage = 10;
+    private AgentController _controller;
+
+    private void Awake()
+    {
+        _controller = transform.parent.GetComponent<AgentController>();
+    }
 
     public void CastDamage()
     {
         Vector3 startPos = transform.position - transform.forward * _casterRadius;
 
-        RaycastHit hit;
-        bool isHit = Physics.SphereCast(startPos, _casterRadius, transform.forward, 
-                                out hit, _casterRadius + _casterInterpolation, _targetLayer);
+        RaycastHit[] hits = Physics.SphereCastAll(startPos, _casterRadius, transform.forward, 
+                                 _casterRadius + _casterInterpolation, _targetLayer);
 
-        if(isHit)
+        for(int i = 0; i < hits.Length; i++)
         {
             //Debug.Log($"맞았습니다.{hit.collider.name}");
-            if (hit.collider.TryGetComponent<IDamageable>(out IDamageable health)) {
-                health.OnDamage(_damage, hit.point, hit.normal);
+            if (hits[i].collider.TryGetComponent<IDamageable>(out IDamageable health)) 
+            {
+                if(hits[i].point.sqrMagnitude == 0)
+                {
+                    continue;
+                }
+
+                float dice = Random.value;
+                int damage = _controller.CharacterData.BaseDamage;
+                int fontsize = 10;
+                Color fontColot = Color.white;
+                if(dice < _controller.CharacterData.BaseCritical)
+                {
+                    damage = Mathf.CeilToInt(damage * _controller.CharacterData.BaseCriticalDamage);
+                    fontsize = 15;
+                    fontColot = Color.red;
+                }
+
+                health.OnDamage(damage, hits[i].point, hits[i].normal);
+                PopupText text = PoolManager.Instance.Pop("PopupText") as PopupText;
+                text.Startpopup(damage.ToString(), hits[i].point + new Vector3(0, 0.5f), fontsize, fontColot);
             }
-        }else
-        {
-            Debug.Log("안 맞았습니다.");
         }
     }
 

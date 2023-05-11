@@ -1,7 +1,9 @@
+using Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,6 +35,13 @@ public class GameManager : MonoBehaviour
 
         CreatePool();
         CreateTimeController();
+        CreateUIManager();
+    }
+
+    private void CreateUIManager()
+    {
+        UIDocument uidoc = FindObjectOfType<UIDocument>();
+        UIManager.Instance = uidoc.gameObject.AddComponent<UIManager>();
     }
 
     private void CreatePool()
@@ -48,4 +57,23 @@ public class GameManager : MonoBehaviour
     {
         TimeController.Instance = gameObject.AddComponent<TimeController>();
     }
+
+    #region 디버그 모드
+    [SerializeField] private LayerMask _whatIsGround;
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            bool result = Physics.Raycast(ray, out hit, Define.MainCam.farClipPlane, _whatIsGround);
+
+            if(result)
+            {
+                EnemyController e = PoolManager.Instance.Pop("HammerEnemy") as EnemyController;
+                e.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+            }
+        }
+    }
+    #endregion
 }

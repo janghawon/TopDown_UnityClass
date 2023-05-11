@@ -6,7 +6,7 @@ using UnityEngine;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _moveSpeed = 8f, _gravity = -9.8f;
+    private float _gravity = -9.8f;
 
     private CharacterController _charController;
     private AgentAnimator _agentAnimator;
@@ -18,10 +18,13 @@ public class AgentMovement : MonoBehaviour
 
     public bool IsActiveMove { get; set; }
 
+    private AgentController _controller;
+
     private void Awake()
     {
         _charController = GetComponent<CharacterController>();
         _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>();
+        _controller = GetComponent<AgentController>();
     }
 
     public void SetMovementVelocity(Vector3 value)
@@ -40,7 +43,7 @@ public class AgentMovement : MonoBehaviour
 
         _agentAnimator?.SetSpeed(_movementVelocity.sqrMagnitude); //이동속도 반영
 
-        _movementVelocity *= _moveSpeed * Time.fixedDeltaTime;
+        _movementVelocity *= _controller.CharacterData.MoveSpeed * Time.fixedDeltaTime;
         if(_movementVelocity.sqrMagnitude > 0)
         {
             transform.rotation = Quaternion.LookRotation(_movementVelocity);

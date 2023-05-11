@@ -10,4 +10,11 @@ public class AIActionData : MonoBehaviour
     public Vector3 LastSpotPoint; //마지막으로 발견된 지점은 어디인가?
     public bool IsArrived; //목적지에 도착했는가?
     public bool IsAttacking; //현재 공격이 진행중인가?
+
+    public void Init()
+    {
+        TargetSpotted = false;
+        IsArrived = false;
+        IsAttacking = false;
+    }
 }
