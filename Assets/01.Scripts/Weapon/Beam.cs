@@ -1,3 +1,4 @@
+using Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,16 +77,47 @@ public class Beam : PoolableMono
     
     public void StopBeam()
     {
-
+        StartCoroutine(StopSequence());
     }
 
     private IEnumerator DelayStop()
     {
-
+        yield return new WaitForSeconds(_beamTime);
+        StopBeam();
     }
 
     private IEnumerator StopSequence()
     {
+        _lineRenderer.enabled = false;
+        _beamLight.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        _beamMuzzle.Stop();
+        _beamFlare.Stop();
+        yield return new WaitForSeconds(0.3f);
+        PoolManager.Instance.Push(this);
+    }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            PreCharging();
+        }
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            bool result = Physics.Raycast(ray, out hit, Define.MainCam.farClipPlane, 1 << LayerMask.NameToLayer("Ground"));
+
+            Vector3 pos = hit.point;
+            pos.y = transform.position.y;
+            Vector3 dir = pos - transform.position;
+            if(result)
+            {
+                FireBeam(5, dir);
+            }
+            
+        }
     }
 }
