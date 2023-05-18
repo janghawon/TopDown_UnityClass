@@ -21,12 +21,12 @@ public class ChaseAIState : CommonAIState
         _enemyController.VFXManager.PlayFootStep();
     }
 
-    public override void UpdateState()
+    public override bool UpdateState()
     {
         _enemyController.NavMovement.MoveToTarget(_aiActionData.LastSpotPoint);
         _aiActionData.IsArrived = _enemyController.NavMovement.CheckIsArrived();
 
-        base.UpdateState();
+        return base.UpdateState();
         //여기다가 해줄 일 써주자.        
     }
 }

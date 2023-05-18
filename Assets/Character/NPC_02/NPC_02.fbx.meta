@@ -53,11 +53,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: NPC_02_DEAD
-      takeName: NPC_02_DEAD
+      name: NPC_02_SHOOT (1)
+      takeName: NPC_02_SHOOT
       internalID: 0
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 76
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -76,7 +76,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.35007048
+        functionName: OnPreAnimationEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -105,7 +112,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: OnAnimationEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -164,8 +178,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9774194
-        functionName: OnAnimationEnd
+      - time: 0.22124143
+        functionName: OnPreAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -173,6 +187,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.5333333
         functionName: OnAnimationEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9774194
+        functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

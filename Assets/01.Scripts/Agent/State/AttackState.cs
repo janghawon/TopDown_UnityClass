@@ -81,7 +81,7 @@ public class AttackState : CommonState
         _agentController.ChangeState(StateType.Rolling);
     }
 
-    public override void UpdateState()
+    public override bool UpdateState()
     {
         if(_canAttack && _keyTimer > 0)
         {
@@ -105,5 +105,7 @@ public class AttackState : CommonState
             );
 
         }
+
+        return true;
     }
 }

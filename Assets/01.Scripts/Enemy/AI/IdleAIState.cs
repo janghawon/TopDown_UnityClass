@@ -14,9 +14,9 @@ public class IdleAIState : CommonAIState
         
     }
 
-    public override void UpdateState()
+    public override bool UpdateState()
     {
-        base.UpdateState();
+        return base.UpdateState();
         //여기에 해줄 일을 써주면 된다.
     }
 }

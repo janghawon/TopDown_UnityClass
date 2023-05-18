@@ -15,9 +15,8 @@ public class AgentAnimator : MonoBehaviour
 
     private readonly int _isDeadHash = Animator.StringToHash("is_dead");
     private readonly int _deadTriggerHash = Animator.StringToHash("dead");
-
-    public event Action OnAnimationEndTrigger = null; //애니메이션이 종료될때마다 트리거 되는 이벤트임.
-    public event Action OnAnimationEventTrigger = null; //애니메이션 내의 이벤트 트리거
+    private readonly int _hurtTriggerHash = Animator.StringToHash("hurt");
+    
 
     private Animator _animator;
     public Animator Animator => _animator;
@@ -44,6 +43,13 @@ public class AgentAnimator : MonoBehaviour
         else
             _animator.ResetTrigger(_attackHash); //이전 트리거 값이 남아있지 않도록 지워져야 한다.
     }
+    public void SetHurtTrigger(bool value)
+    {
+        if (value)
+            _animator.SetTrigger(_hurtTriggerHash);
+        else
+            _animator.ResetTrigger(_hurtTriggerHash); //이전 트리거 값이 남아있지 않도록 지워져야 한다.
+    }
 
     public void SetSpeed(float value)
     {
@@ -55,6 +61,11 @@ public class AgentAnimator : MonoBehaviour
         _animator.SetBool(_isAirboneHash, value);
     }
 
+    #region AnimationTree
+    public event Action OnAnimationEndTrigger = null; //애니메이션이 종료될때마다 트리거 되는 이벤트임.
+    public event Action OnAnimationEventTrigger = null; //애니메이션 내의 이벤트 트리거
+    public event Action OnPreAnimationEventTrigger = null;
+
     public void OnAnimationEnd() //애니메이션이 종료되면 이게 실행된다.
     {
         OnAnimationEndTrigger?.Invoke();
@@ -63,6 +74,11 @@ public class AgentAnimator : MonoBehaviour
     public void OnAnimationEvent()
     {
         OnAnimationEventTrigger?.Invoke();
+    }
+
+    public void OnPreAnimationEvent()
+    {
+        OnPreAnimationEventTrigger?.Invoke();
     }
 
     public void StopAnimator(bool value)
@@ -75,4 +91,5 @@ public class AgentAnimator : MonoBehaviour
         _animator.SetTrigger(_deadTriggerHash);
         _animator.SetBool(_isDeadHash, true);
     }
+    #endregion
 }

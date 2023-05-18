@@ -23,15 +23,26 @@ public abstract class CommonAIState : MonoBehaviour, IState
         _transitions.ForEach(t => t.SetUp(agentRoot)); //여기서부터 셋업이 연쇄한다.
     }
 
-    public virtual void UpdateState()
+    public virtual bool UpdateState()
     {
         foreach(AITransition t in _transitions)
         {
             if(t.CheckDecisions())
             {
                 _enemyController.ChangeState(t.NextState);
-                break;
+                return true;
             }
         }
+
+        foreach(AITransition t in _enemyController.AnyTransition)
+        {
+            if(t.CheckDecisions())
+            {
+                _enemyController.ChangeState(t.NextState);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

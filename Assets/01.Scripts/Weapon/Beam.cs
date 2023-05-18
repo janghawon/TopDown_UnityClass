@@ -16,7 +16,6 @@ public class Beam : PoolableMono
     public LayerMask _whatIsEnemy;
 
     [SerializeField] private float _beamTime = 0.6f;
-    [SerializeField] private int _beamDamage = 5;
 
     private void Awake()
     {
@@ -51,7 +50,7 @@ public class Beam : PoolableMono
     {
         float r = _lineRenderer.startWidth;
         RaycastHit hit;
-        bool isHit = Physics.SphereCast(transform.position, r, targetDir.normalized, out hit, _beamLength);
+        bool isHit = Physics.SphereCast(transform.position, r, targetDir.normalized, out hit, _beamLength, _whatIsEnemy);
         _lineRenderer.enabled = true;
         _lineRenderer.SetPosition(0, transform.position);
         if(isHit)
@@ -97,27 +96,5 @@ public class Beam : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            PreCharging();
-        }
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            bool result = Physics.Raycast(ray, out hit, Define.MainCam.farClipPlane, 1 << LayerMask.NameToLayer("Ground"));
-
-            Vector3 pos = hit.point;
-            pos.y = transform.position.y;
-            Vector3 dir = pos - transform.position;
-            if(result)
-            {
-                FireBeam(5, dir);
-            }
-            
-        }
-    }
+    
 }

@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class AttackAIState : CommonAIState
 {
-    protected float _rotateSpeed = 360f;
     protected Vector3 _targetVector;
 
     protected bool _isActive = false;
 
     protected int _atkDamage = 1;
-    protected float _atkCooltime = 0.2f;
+    protected float _motionDelay = 0.2f;
+
+    [SerializeField] private float _atkCooltime = 1f;
+    private float _lastAtkTime;
+
+    private EnemyDataSO _dataSO;
 
     public override void SetUp(Transform agentRoot)
     {
         base.SetUp(agentRoot);
-        _atkDamage = _enemyController.EnemyData.AtkDamage;
-        _atkCooltime = _enemyController.EnemyData.AtkCoolTime;
-        _rotateSpeed = _enemyController.EnemyData.RotateSpeed;
+        _dataSO = _enemyController.EnemyData;
     }
 
     public override void OnEnterState()
@@ -26,6 +28,7 @@ public class AttackAIState : CommonAIState
         _enemyController.NavMovement.StopImmediately();
         _enemyController.AgentAnimator.OnAnimationEndTrigger += AttackAnimationEndHandle;
         _enemyController.AgentAnimator.OnAnimationEventTrigger += AttackCollisionHandle;
+        _enemyController.AgentAnimator.OnPreAnimationEventTrigger += PreAttackHandle;
         _isActive = true;
     }
 
@@ -34,17 +37,26 @@ public class AttackAIState : CommonAIState
     {
         _enemyController.AgentAnimator.OnAnimationEndTrigger -= AttackAnimationEndHandle;
         _enemyController.AgentAnimator.OnAnimationEventTrigger -= AttackCollisionHandle;
+        _enemyController.AgentAnimator.OnPreAnimationEventTrigger -= PreAttackHandle;
 
         _enemyController.AgentAnimator.SetAttackState(false);
         _enemyController.AgentAnimator.SetAttackTrigger(false);
+        _enemyController.EnemyAttackCompo.CancleAttack();
+        _aiActionData.IsAttacking = false;
         _isActive = false;
+    }
+
+    private void PreAttackHandle()
+    {
+        _enemyController.EnemyAttackCompo.PreAttack();
     }
 
     private void AttackAnimationEndHandle()
     {
         //애니메이션이 끝났을 때를 위한 식
         _enemyController.AgentAnimator.SetAttackState(false);
-        StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _atkCooltime));
+        _lastAtkTime = Time.time;
+        StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _motionDelay));
     }
 
     private IEnumerator DelayCoroutine(Action Callback, float time)
@@ -55,8 +67,7 @@ public class AttackAIState : CommonAIState
 
     private void AttackCollisionHandle()
     {
-        //적이 공격했을 때 주변을 캐스팅해서 데미지를 주는 식을 넣어야 한다.
-        //나중에 컴포넌트화 예정이고
+        _enemyController.EnemyAttackCompo.Attack(_dataSO.AtkDamage, _targetVector);
     }
 
     private void SetTarget()
@@ -65,9 +76,12 @@ public class AttackAIState : CommonAIState
         _targetVector.y = 0; //타겟을 바라보는 방향을 구해주는 매서드
     }
 
-    public override void UpdateState()
+    public override bool UpdateState()
     {
-        base.UpdateState();
+        if(base.UpdateState())
+        {
+            return true;
+        }
 
         if(_aiActionData.IsAttacking == false && _isActive)  //액티브
         {
@@ -84,15 +98,18 @@ public class AttackAIState : CommonAIState
 
                 float sign = result.y > 0 ? 1 : -1;
                 _enemyController.transform.rotation
-                    = Quaternion.Euler(0, sign * _rotateSpeed * Time.deltaTime, 0) 
+                    = Quaternion.Euler(0, sign * _dataSO.RotateSpeed * Time.deltaTime, 0) 
                         * _enemyController.transform.rotation;
-            }else
+            }
+            else if(_lastAtkTime + _dataSO.AtkCoolTime  < Time.time)
             {
                 _aiActionData.IsAttacking = true;
                 _enemyController.AgentAnimator.SetAttackState(true);
                 _enemyController.AgentAnimator.SetAttackTrigger(true);
             }            
         }
+
+        return false;
     }
 
 }

@@ -46,8 +46,9 @@ public class RollingState : CommonState
     }
 
 
-    public override void UpdateState()
+    public override bool UpdateState()
     {
         _timer += Time.deltaTime;
+        return false;
     }
 }

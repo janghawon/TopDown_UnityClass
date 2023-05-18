@@ -11,10 +11,14 @@ public class AIActionData : MonoBehaviour
     public bool IsArrived; //목적지에 도착했는가?
     public bool IsAttacking; //현재 공격이 진행중인가?
 
+    [field:SerializeField]
+    public bool IsHit { get; set; }
+
     public void Init()
     {
         TargetSpotted = false;
         IsArrived = false;
         IsAttacking = false;
+        IsHit = false;
     }
 }

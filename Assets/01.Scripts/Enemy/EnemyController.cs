@@ -8,6 +8,7 @@ public class EnemyController : PoolableMono
 {
     [SerializeField]
     protected CommonAIState _currentState;
+    public CommonAIState CurrentState => _currentState;
 
     [SerializeField]
     protected EnemyDataSO _enemyData;
@@ -31,6 +32,12 @@ public class EnemyController : PoolableMono
     private CommonAIState _initAIState;
     private AIActionData _actionData;
 
+    private EnemyAttack _enemyAttack;
+    public EnemyAttack EnemyAttackCompo => _enemyAttack;
+
+    private List<AITransition> _anyTransitions = new List<AITransition>();
+    public List<AITransition> AnyTransition => _anyTransitions;
+
     protected virtual void Awake()
     {
         List<CommonAIState> states = new List<CommonAIState>();
@@ -43,9 +50,18 @@ public class EnemyController : PoolableMono
         _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>(); //3
         _vfxManager = GetComponent<EnemyVFXManager>();
         _enemyHealth = GetComponent<EnemyHealth>();
+        _actionData = transform.Find("AI").GetComponent<AIActionData>();
+        _enemyAttack = GetComponent<EnemyAttack>();
+
+        Transform anyTranTrm = transform.Find("AI/AnyTransitions");
+        if(anyTranTrm != null)
+        {
+            anyTranTrm.GetComponentsInChildren<AITransition>(_anyTransitions);
+            _anyTransitions.ForEach(t => t.SetUp(transform));
+        }
 
         _initAIState = _currentState;
-        _actionData = transform.Find("AI").GetComponent<AIActionData>();
+        
     }
 
     protected virtual void Start()
