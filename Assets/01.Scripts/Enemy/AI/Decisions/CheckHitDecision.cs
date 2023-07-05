@@ -1,6 +1,4 @@
 
-
-
 public class CheckHitDecision : AIDecision
 {
     public override bool MakeDecision()

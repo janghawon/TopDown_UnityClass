@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CheckStateDecision : AIDecision
 {
-    [SerializeField] private CommonAIState _baseState;
+
+    [SerializeField]
+    private CommonAIState _baseState;
 
     public override bool MakeDecision()
     {

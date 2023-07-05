@@ -31,6 +31,7 @@ public class AttackState : CommonState
     private void OnDamageCastHandle()
     {
         _damageCaster.CastDamage();
+        
     }
 
     public override void OnEnterState()
@@ -103,9 +104,8 @@ public class AttackState : CommonState
                 Vector3.zero,
                 lerpTime)
             );
-
         }
 
-        return true;
+        return false;
     }
 }

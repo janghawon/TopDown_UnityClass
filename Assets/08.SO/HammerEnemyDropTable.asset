@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a02bd49544ab9040a52cf7ae34aa115, type: 3}
+  m_Script: {fileID: 11500000, guid: 082aa8578eaad0e4891bd94ed1f58105, type: 3}
   m_Name: HammerEnemyDropTable
   m_EditorClassIdentifier: 
   DropList:
-  - {fileID: 11400000, guid: 8e676925e29f75a47b4c2e56c4c93e33, type: 2}
+  - {fileID: 11400000, guid: 4e6e38f68382f57428e1f9325afcbc6f, type: 2}

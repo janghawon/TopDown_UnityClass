@@ -12,7 +12,8 @@ public class PlayerVFXManager : MonoBehaviour
     [SerializeField]
     private VisualEffect _footstep;
 
-    [SerializeField] private VisualEffect _healEffect;
+    [SerializeField]
+    private VisualEffect _healEffect;
 
     private AttackState _atkState;
 
@@ -49,4 +50,5 @@ public class PlayerVFXManager : MonoBehaviour
     {
         _healEffect.Play();
     }
+
 }

@@ -13,9 +13,9 @@ public class TimeController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void ModifyTimeScale(float endTimeValue, float timeToWait, Action OnCompleteCallBack)
+    public void ModifyTimeScale(float endTimeValue, float timeToWait, Action OnCompleteCallback)
     {
-        StartCoroutine(TimeScaleCoroutine(endTimeValue, timeToWait, OnCompleteCallBack));
+        StartCoroutine(TimeScaleCoroutine(endTimeValue, timeToWait, OnCompleteCallback));
     }
 
     IEnumerator TimeScaleCoroutine(float endTimeValue, float timeToWait, Action OnCompleteCallback)
@@ -24,4 +24,6 @@ public class TimeController : MonoBehaviour
         Time.timeScale = endTimeValue;
         OnCompleteCallback?.Invoke();
     }
+
+    //
 }

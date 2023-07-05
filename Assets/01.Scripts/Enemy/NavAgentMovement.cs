@@ -29,13 +29,6 @@ public class NavAgentMovement : MonoBehaviour
         _aiActionData = transform.Find("AI").GetComponent<AIActionData>();
     }
 
-    public void ResetNavAgent()
-    {
-        _characterController.enabled = true;
-        _navAgent.enabled = true;
-        _navAgent.isStopped = false;
-    }
-
     public void SetInitData(float speed)
     {
         _navAgent.speed = speed;
@@ -91,6 +84,13 @@ public class NavAgentMovement : MonoBehaviour
         _movementVelocity = Vector3.Lerp(_knockBackVelocity, Vector3.zero, ratio) * Time.fixedDeltaTime;
 
         return ratio < 1;
+    }
+
+    public void ResetNavAgent()
+    {
+        _characterController.enabled = true;
+        _navAgent.enabled = true;
+        _navAgent.isStopped = false;
     }
 
     private void FixedUpdate()

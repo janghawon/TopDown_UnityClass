@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7566147265180858771
+--- !u!1 &3548677046800567438
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,66 +8,66 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1148844983385635155}
-  - component: {fileID: 1985492662419990669}
-  - component: {fileID: 928040536612164893}
-  - component: {fileID: 941072814028745169}
+  - component: {fileID: 3548677046800567436}
+  - component: {fileID: 3548677046800567437}
+  - component: {fileID: 869698365544222260}
+  - component: {fileID: 2918598806363181172}
   m_Layer: 9
-  m_Name: Healorb
+  m_Name: HealOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1148844983385635155
+--- !u!4 &3548677046800567436
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566147265180858771}
+  m_GameObject: {fileID: 3548677046800567438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1944672075256202455}
+  - {fileID: 3167491598588482898}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1985492662419990669
+--- !u!135 &3548677046800567437
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566147265180858771}
+  m_GameObject: {fileID: 3548677046800567438}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &928040536612164893
+--- !u!114 &869698365544222260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566147265180858771}
+  m_GameObject: {fileID: 3548677046800567438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9504cbd0c0f064fa45e6a6e756c4b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 174d75e0f1dc3f44c846e3375aad695c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceData: {fileID: 11400000, guid: 8e676925e29f75a47b4c2e56c4c93e33, type: 2}
---- !u!82 &941072814028745169
+  ResourceData: {fileID: 11400000, guid: 4e6e38f68382f57428e1f9325afcbc6f, type: 2}
+--- !u!82 &2918598806363181172
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566147265180858771}
+  m_GameObject: {fileID: 3548677046800567438}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -157,12 +157,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &15343519869475395
+--- !u!1001 &3548677046241496006
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1148844983385635155}
+    m_TransformParent: {fileID: 3548677046800567436}
     m_Modifications:
     - target: {fileID: 1261446085333238830, guid: e7156effdad72f34baa526c45924c532, type: 3}
       propertyPath: m_Name
@@ -230,8 +230,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7156effdad72f34baa526c45924c532, type: 3}
---- !u!4 &1944672075256202455 stripped
+--- !u!4 &3167491598588482898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1930458930688302740, guid: e7156effdad72f34baa526c45924c532, type: 3}
-  m_PrefabInstance: {fileID: 15343519869475395}
+  m_PrefabInstance: {fileID: 3548677046241496006}
   m_PrefabAsset: {fileID: 0}

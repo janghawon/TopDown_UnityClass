@@ -43,7 +43,7 @@ public class AgentMovement : MonoBehaviour
 
         _agentAnimator?.SetSpeed(_movementVelocity.sqrMagnitude); //이동속도 반영
 
-        _movementVelocity *= _controller.CharacterData.MoveSpeed * Time.fixedDeltaTime;
+        _movementVelocity *= _controller.CharData.MoveSpeed * Time.fixedDeltaTime;
         if(_movementVelocity.sqrMagnitude > 0)
         {
             transform.rotation = Quaternion.LookRotation(_movementVelocity);

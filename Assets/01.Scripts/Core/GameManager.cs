@@ -38,11 +38,6 @@ public class GameManager : MonoBehaviour
         CreateUIManager();
     }
 
-    private void CreateUIManager()
-    {
-        UIDocument uidoc = FindObjectOfType<UIDocument>();
-        UIManager.Instance = uidoc.gameObject.AddComponent<UIManager>();
-    }
 
     private void CreatePool()
     {
@@ -58,15 +53,27 @@ public class GameManager : MonoBehaviour
         TimeController.Instance = gameObject.AddComponent<TimeController>();
     }
 
+    private void CreateUIManager()
+    {
+        UIDocument uidocument = FindObjectOfType<UIDocument>();
+        UIManager.Instance = uidocument.gameObject.AddComponent<UIManager>();
+    }
+
+
     #region 디버그 모드
-    [SerializeField] private LayerMask _whatIsGround;
+
+    [SerializeField]
+    private LayerMask _whatIsGround;
     private void Update()
     {
         //if(Input.GetKeyDown(KeyCode.Q))
         //{
         //    Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
+
         //    RaycastHit hit;
-        //    bool result = Physics.Raycast(ray, out hit, Define.MainCam.farClipPlane, _whatIsGround);
+
+        //    bool result = Physics.Raycast(ray, out hit, Define.MainCam.farClipPlane, 
+        //                _whatIsGround);
 
         //    if(result)
         //    {

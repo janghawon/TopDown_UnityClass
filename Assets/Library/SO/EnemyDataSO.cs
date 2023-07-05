@@ -10,6 +10,6 @@ public class EnemyDataSO : ScriptableObject
     public float RotateSpeed;
     public int AtkDamage;
     public float MotionDelay; //얘는 공격딜레이
-    public float AtkCoolTime;
+    public float AtkCoolTime; //공격 쿨타임
 }
 //탑다운 

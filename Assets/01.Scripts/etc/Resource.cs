@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Resource : PoolableMono
 {
+
     public ResourceDataSO ResourceData;
+
     private AudioSource _audioSource;
     private Collider _collider;
 
@@ -22,14 +23,13 @@ public class Resource : PoolableMono
         StartCoroutine(DestroyCoroutine());
     }
 
-    IEnumerator DestroyCoroutine()
+    private IEnumerator DestroyCoroutine()
     {
         if(_audioSource.clip != null)
         {
             _audioSource.Play();
             yield return new WaitForSeconds(_audioSource.clip.length + 0.3f);
-        }
-        else
+        }else
         {
             yield return null;
         }

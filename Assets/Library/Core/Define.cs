@@ -6,10 +6,10 @@ namespace Core
     {
         Normal = 0,
         Attack = 1,
-        //OnHit = 2,
+        OnHit = 2,
         Rolling = 3,
     }
-
+    
     public enum ResourceType
     {
         HealOrb,

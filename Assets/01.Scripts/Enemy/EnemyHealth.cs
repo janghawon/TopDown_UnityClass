@@ -50,8 +50,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         OnHitTriggered?.Invoke();
 
-        UIManager.Instance.Subscribe(this); //구독
-        OnHealthChanged?.Invoke(_currentHP, _maxHP); //이건 나중에 UI를 위해서
+        UIManager.Instance.Subscribe(this); //나를 구독해라
+        OnHealthChanged?.Invoke(_currentHP, _maxHP); //그리고 전파
     }
 
 }

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class EnemyController : PoolableMono
 {
+    
+
     [SerializeField]
     protected CommonAIState _currentState;
     public CommonAIState CurrentState => _currentState;
@@ -29,14 +31,14 @@ public class EnemyController : PoolableMono
     private EnemyVFXManager _vfxManager;
     public EnemyVFXManager VFXManager => _vfxManager;
 
-    private CommonAIState _initAIState;
+    private CommonAIState _initState;
     private AIActionData _actionData;
 
     private EnemyAttack _enemyAttack;
     public EnemyAttack EnemyAttackCompo => _enemyAttack;
 
     private List<AITransition> _anyTransitions = new List<AITransition>();
-    public List<AITransition> AnyTransition => _anyTransitions;
+    public List<AITransition> AnyTransitions => _anyTransitions;
 
     protected virtual void Awake()
     {
@@ -50,6 +52,7 @@ public class EnemyController : PoolableMono
         _agentAnimator = transform.Find("Visual").GetComponent<AgentAnimator>(); //3
         _vfxManager = GetComponent<EnemyVFXManager>();
         _enemyHealth = GetComponent<EnemyHealth>();
+
         _actionData = transform.Find("AI").GetComponent<AIActionData>();
         _enemyAttack = GetComponent<EnemyAttack>();
 
@@ -60,8 +63,7 @@ public class EnemyController : PoolableMono
             _anyTransitions.ForEach(t => t.SetUp(transform));
         }
 
-        _initAIState = _currentState;
-        
+        _initState = _currentState;
     }
 
     protected virtual void Start()
@@ -107,8 +109,8 @@ public class EnemyController : PoolableMono
     {
         _enemyHealth.SetMaxHP(EnemyData.MaxHP);
         _navMovement.ResetNavAgent();
-        ChangeState(_initAIState);
-        _actionData.Init();
+        ChangeState(_initState);
+        _actionData.Init(); //액션데이터도 초기화
     }
 
     public void GotoPool()

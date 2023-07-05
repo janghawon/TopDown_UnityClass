@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="SO/CharacterData")]
+[CreateAssetMenu(menuName = "SO/CharacterData")]
 public class CharacterDataSO : ScriptableObject
 {
     public int BaseDamage;

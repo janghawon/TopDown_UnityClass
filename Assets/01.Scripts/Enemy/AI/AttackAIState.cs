@@ -6,13 +6,8 @@ using UnityEngine;
 public class AttackAIState : CommonAIState
 {
     protected Vector3 _targetVector;
-
     protected bool _isActive = false;
 
-    protected int _atkDamage = 1;
-    protected float _motionDelay = 0.2f;
-
-    [SerializeField] private float _atkCooltime = 1f;
     private float _lastAtkTime;
 
     private EnemyDataSO _dataSO;
@@ -41,7 +36,8 @@ public class AttackAIState : CommonAIState
 
         _enemyController.AgentAnimator.SetAttackState(false);
         _enemyController.AgentAnimator.SetAttackTrigger(false);
-        _enemyController.EnemyAttackCompo.CancleAttack();
+        _enemyController.EnemyAttackCompo.CancelAttack();  //나갈때 공격하던거 취소 시키고
+        
         _aiActionData.IsAttacking = false;
         _isActive = false;
     }
@@ -55,8 +51,8 @@ public class AttackAIState : CommonAIState
     {
         //애니메이션이 끝났을 때를 위한 식
         _enemyController.AgentAnimator.SetAttackState(false);
-        _lastAtkTime = Time.time;
-        StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _motionDelay));
+        _lastAtkTime = Time.time; //이제부터 1초 기다렸다가 다시 레이저 발사
+        StartCoroutine(DelayCoroutine(() => _aiActionData.IsAttacking = false, _dataSO.MotionDelay));
     }
 
     private IEnumerator DelayCoroutine(Action Callback, float time)
@@ -100,8 +96,7 @@ public class AttackAIState : CommonAIState
                 _enemyController.transform.rotation
                     = Quaternion.Euler(0, sign * _dataSO.RotateSpeed * Time.deltaTime, 0) 
                         * _enemyController.transform.rotation;
-            }
-            else if(_lastAtkTime + _dataSO.AtkCoolTime  < Time.time)
+            }else if(_lastAtkTime + _dataSO.AtkCoolTime < Time.time) //쿨타임도 찼고 각도도 10도로 들어왔다면
             {
                 _aiActionData.IsAttacking = true;
                 _enemyController.AgentAnimator.SetAttackState(true);

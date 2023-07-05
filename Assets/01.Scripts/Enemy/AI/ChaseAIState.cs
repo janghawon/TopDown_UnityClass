@@ -27,6 +27,5 @@ public class ChaseAIState : CommonAIState
         _aiActionData.IsArrived = _enemyController.NavMovement.CheckIsArrived();
 
         return base.UpdateState();
-        //여기다가 해줄 일 써주자.        
     }
 }

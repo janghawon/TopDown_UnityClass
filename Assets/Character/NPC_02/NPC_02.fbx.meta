@@ -53,11 +53,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: NPC_02_SHOOT (1)
-      takeName: NPC_02_SHOOT
+      name: NPC_02_DEAD
+      takeName: NPC_02_DEAD
       internalID: 0
       firstFrame: 0
-      lastFrame: 76
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -76,14 +76,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.35007048
-        functionName: OnPreAnimationEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -113,7 +106,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.9364162
         functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -178,8 +171,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.22124143
-        functionName: OnPreAnimationEvent
+      - time: 0.9774194
+        functionName: OnAnimationEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -192,8 +185,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9774194
-        functionName: OnAnimationEnd
+      - time: 0.21965317
+        functionName: OnPreAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

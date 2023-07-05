@@ -25,33 +25,37 @@ public class DamageCaster : MonoBehaviour
     {
         Vector3 startPos = transform.position - transform.forward * _casterRadius;
 
-        RaycastHit[] hits = Physics.SphereCastAll(startPos, _casterRadius, transform.forward, 
+        
+        RaycastHit[] hits = Physics.SphereCastAll (startPos, _casterRadius, transform.forward, 
                                  _casterRadius + _casterInterpolation, _targetLayer);
 
-        for(int i = 0; i < hits.Length; i++)
+        foreach (RaycastHit hit in hits)
         {
-            //Debug.Log($"맞았습니다.{hit.collider.name}");
-            if (hits[i].collider.TryGetComponent<IDamageable>(out IDamageable health)) 
+            if (hit.collider.TryGetComponent<IDamageable>(out IDamageable health))
             {
-                if(hits[i].point.sqrMagnitude == 0)
+                if (hit.point.sqrMagnitude == 0)
                 {
                     continue;
                 }
 
-                float dice = Random.value;
-                int damage = _controller.CharacterData.BaseDamage;
-                int fontsize = 10;
-                Color fontColot = Color.white;
-                if(dice < _controller.CharacterData.BaseCritical)
+                float dice = Random.value; // 0 ~ 1까지의 값
+                int damage = _controller.CharData.BaseDamage;
+                int fontSize = 10;
+                Color fontColor = Color.white;
+                if (dice < _controller.CharData.BaseCritical)
                 {
-                    damage = Mathf.CeilToInt(damage * _controller.CharacterData.BaseCriticalDamage);
-                    fontsize = 15;
-                    fontColot = Color.red;
+                    damage = Mathf.CeilToInt(damage * _controller.CharData.BaseCriticalDamage);
+                    fontSize = 15;
+                    fontColor = Color.red;
                 }
 
-                health.OnDamage(damage, hits[i].point, hits[i].normal);
+                health.OnDamage(damage, hit.point, hit.normal);
+
+                //크리티컬 계산해야하지만 일단은 그냥 고
+
                 PopupText text = PoolManager.Instance.Pop("PopupText") as PopupText;
-                text.Startpopup(damage.ToString(), hits[i].point + new Vector3(0, 0.5f), fontsize, fontColot);
+                text.StartPopup(text: damage.ToString(), pos: hit.point + new Vector3(0, 0.5f),
+                                fontSize: fontSize, color: fontColor);
             }
         }
     }

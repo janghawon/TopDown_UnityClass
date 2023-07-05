@@ -34,9 +34,10 @@ public abstract class CommonAIState : MonoBehaviour, IState
             }
         }
 
-        foreach(AITransition t in _enemyController.AnyTransition)
+        //AnyState 상태 전이 검사
+        foreach(AITransition t in _enemyController.AnyTransitions)
         {
-            if(t.CheckDecisions())
+            if (t.CheckDecisions())
             {
                 _enemyController.ChangeState(t.NextState);
                 return true;

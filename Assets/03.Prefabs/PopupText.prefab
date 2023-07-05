@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3675869786542663425
+--- !u!1 &9149069725114749519
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3675869786542663437}
-  - component: {fileID: 3675869786542663426}
-  - component: {fileID: 3675869786542663427}
-  - component: {fileID: 3675869786542663424}
+  - component: {fileID: 9149069725114749515}
+  - component: {fileID: 9149069725114749516}
+  - component: {fileID: 9149069725114749517}
+  - component: {fileID: 9149069725114749518}
   m_Layer: 0
   m_Name: PopupText
   m_TagString: Untagged
@@ -19,15 +19,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3675869786542663437
+--- !u!224 &9149069725114749515
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675869786542663425}
+  m_GameObject: {fileID: 9149069725114749519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.34}
+  m_LocalPosition: {x: 0, y: 0, z: -1.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36,16 +36,16 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.4, y: 1.628}
+  m_AnchoredPosition: {x: 5.18, y: 3.99}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!23 &3675869786542663426
+--- !u!23 &9149069725114749516
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675869786542663425}
+  m_GameObject: {fileID: 9149069725114749519}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8414859135747046888, guid: 39173809eabbcce4e94d6c81903e87ff, type: 2}
+  - {fileID: 4641939860523436731, guid: b9415791e07e47f47a17cc85ad274eb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,13 +81,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3675869786542663427
+--- !u!114 &9149069725114749517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675869786542663425}
+  m_GameObject: {fileID: 9149069725114749519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999999
+  m_text: 999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39173809eabbcce4e94d6c81903e87ff, type: 2}
-  m_sharedMaterial: {fileID: -8414859135747046888, guid: 39173809eabbcce4e94d6c81903e87ff, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9415791e07e47f47a17cc85ad274eb8, type: 2}
+  m_sharedMaterial: {fileID: 4641939860523436731, guid: b9415791e07e47f47a17cc85ad274eb8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -171,17 +171,17 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3675869786542663426}
+  m_renderer: {fileID: 9149069725114749516}
   m_maskType: 0
---- !u!114 &3675869786542663424
+--- !u!114 &9149069725114749518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675869786542663425}
+  m_GameObject: {fileID: 9149069725114749519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0006a2d4a297844b15db21586eabdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1509a500d9a234f44a7b9d9ebbd291fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

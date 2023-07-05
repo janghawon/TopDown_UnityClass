@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class ItemDropper : MonoBehaviour
 {
-    [SerializeField] private ItemDropTableSO _dropTable;
+    [SerializeField]
+    private ItemDropTableSO _dropTable;
     private float[] _itemWeights;
 
-    [SerializeField][Range(0, 1)] private float _dropChance;
+    [SerializeField]
+    [Range(0, 1f)]
+    private float _dropChance;
 
     private void Start()
     {
@@ -17,39 +20,39 @@ public class ItemDropper : MonoBehaviour
 
     public void DropItem()
     {
-        float ratio = Random.value;
+        float ratio = Random.value; // 0 ~ 1까지의 값이 나와
 
-        if(ratio < _dropChance)
+        if(ratio < _dropChance)  //이러면 드랍
         {
-            int idx = GetRamdomWeightsIndex();
-            PoolableMono resource = PoolManager.Instance.Pop(_dropTable.DropList[idx].ItemPrefab.name);
+            int idx = GetRandomWeightedIndex();
+            PoolableMono resource = PoolManager.Instance.Pop(
+                                _dropTable.DropList[idx].ItemPrefab.name);
             resource.transform.position = transform.position;
         }
     }
 
-    private int GetRamdomWeightsIndex()
+    private int GetRandomWeightedIndex()
     {
-        float sum = 0;
-        for(int i = 0; i < _itemWeights.Length; i++)
+        float sum = 0f;
+        for (int i = 0; i < _itemWeights.Length; i++)
         {
             sum += _itemWeights[i];
         }
 
-        float randValue = Random.Range(0, sum);
-        float temsum = 0;
+        float randomValue = Random.Range(0f, sum);
+        float tempSum = 0;
 
         for(int i = 0; i < _itemWeights.Length; i++)
         {
-            if(randValue >= temsum && randValue < temsum + _itemWeights[i])
+            if(randomValue >= tempSum && randomValue < tempSum + _itemWeights[i])
             {
                 return i;
-            }
-            else
+            }else
             {
-                temsum += _itemWeights[i];
+                tempSum += _itemWeights[i];
             }
         }
-
+        
         return 0;
     }
 }
