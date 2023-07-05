@@ -40,6 +40,9 @@ public class EnemyController : PoolableMono
     private List<AITransition> _anyTransitions = new List<AITransition>();
     public List<AITransition> AnyTransitions => _anyTransitions;
 
+    [field:SerializeField]
+    public bool isActive { get; set; }
+
     protected virtual void Awake()
     {
         List<CommonAIState> states = new List<CommonAIState>();
@@ -85,7 +88,7 @@ public class EnemyController : PoolableMono
 
     void Update()
     {
-        if (_enemyHealth.IsDead) return;
+        if (_enemyHealth.IsDead || !isActive) return;
         _currentState?.UpdateState();
     }
 
